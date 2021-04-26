@@ -36,3 +36,17 @@ app.use('/api/teddies', teddyRoutes);
 app.use('/api/furniture', furnitureRoutes);
 
 module.exports = app;
+
+console.log(__dirname);
+
+app.use('/teddies', express.static(__dirname +'/public'))
+
+
+app.listen(3000, function ()  {
+
+  console.log('Listening at Port 3000');
+
+
+});
+
+
