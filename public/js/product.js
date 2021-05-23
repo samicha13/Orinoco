@@ -175,8 +175,14 @@ fetch("http://localhost:3000/api/teddies/" + getId())
                     };
 
                     const arrayPanier = JSON.parse(localStorage.getItem('Panier') )|| [];
-                    if (arrayPanier.some(panier => panier.id === pelucheCart.id)) { 
-                        console.log('deja present');
+                    const existPeluche = arrayPanier.filter(panier => (panier.id === pelucheCart.id && panier.color === pelucheCart.color) )[0];
+                    console.log(existPeluche);
+                    console.log(pelucheCart.qty);
+                    if (existPeluche) {
+                        existPeluche['qty']  = parseInt(pelucheCart.qty) + parseInt(existPeluche['qty']) ;
+                        console.log('déja présent');
+
+
                     } else {
                     arrayPanier.push(pelucheCart);
                     }

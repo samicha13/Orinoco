@@ -1,107 +1,167 @@
-let url = 'http://localhost:3000/api/teddies';
 
 
-
-fetch(url) //recherche et récupération dans l'URL 
-    .then((response) => {
-        response.json().then((elements) => {
-
-            const main = document.getElementById('Test');
-            const row = document.createElement('div');
-            row.className = "row";
-            main.appendChild(row);
-
-    //Je récupére les élèments 
-    const Panier = document.getElementById("teddyCard");
-    const totalP = document.getElementById("totalPanier");
-    console.log(totalP);
-    const mainPanier = document.getElementById("mainPanier");
-    let total=0;
-
-    const productsId = [];
-    Object.entries(localStorage).forEach(e => {
-
-                // structure HTML 
-
-                //div col
-                const divCol = document.createElement("div");                 
-                divCol.className = 'col-12 col-md-6 col-lg-3 text-center';  
-                row.appendChild(divCol);  
-
-                //carte
-                const card = document.createElement('div')
-                card.className = 'card m-3 shadow-sm rounded-3';
-                divCol.appendChild(card);    
-
-                //image 
-                const cardImg = document.createElement('img');
-                cardImg.src = JSON.parse(e[1])["imageUrl"];
-                card.appendChild(cardImg); 
-
-                //caractéristiques ( nom+prix+Quantité)
-                const cardBody = document.createElement('div');
-                cardBody.className = 'card-body';
-                card.appendChild(cardBody);
-
-                //Nom de l'ours
-                const cardName = document.createElement('p');
-                cardName.className = 'card-title m-1';
-                cardBody.appendChild(cardName);
-                cardName.innerHTML = JSON.parse(e[1])["name"];  
-
-                // titre quantité
-                const quantity = document.createElement("p");
-                cardBody.appendChild(quantity);
-                quantity.textContent = "Quantité";
-                quantity.className = "quantity";
-                
-                //couleur
-const color = document.createElement("p");
-cardBody.appendChild(color);
+//declaration de la variable dans laquelle on a met les key et values 
 
 
-                // Quantité
-                const btnQuantity = document.createElement("input");
-                cardBody.appendChild(btnQuantity);
-                btnQuantity.setAttribute("id","quantite");
-                btnQuantity.setAttribute("type","number");
-                btnQuantity.setAttribute("value",JSON.parse(e[1])["qty"]);
-                btnQuantity.setAttribute("min",0);
-                btnQuantity.className = "quantityInput";
+let  prixTotalPanier = 0;
+let a = [];
 
-                //Prix de l'ours
-                const cardPrice = document.createElement('p');
-                cardPrice.className = 'card-text m-1';
-                cardBody.appendChild(cardPrice);
-                cardPrice.innerHTML = 'Prix : ' + (JSON.parse(e[1])["price"])*(JSON.parse(e[1])["qty"]);
-                cardPrice.textContent = 'Prix : ' + (JSON.parse(e[1])["price"])*(JSON.parse(e[1])["qty"]) + ' ' + '€';
 
-                total=total+(JSON.parse(e[1])["price"])*(JSON.parse(e[1])["qty"]);
-                
+//console.log(arrayPanier.length);
 
-    })
+const panierRecap = document.getElementById("panier-recap");
+panierRecap.className = "col-12  text-center";
 
-    const row2 = document.createElement('div');
-    row.className = "row2";
-    totalP.appendChild(row2);
-    row2.innerHTML = 'Total Panier est' + total +"€";
-    row2.textContent='Total de votre panier : ' + total +"€";
+//----- Affichage produit panier---//
 
-    //Bouton 
-    const cardBtn = document.createElement('a');
-    cardBtn.href = "cart.html"          //lien pour récupérer l'id du produit
-    cardBtn.className = 'btn btn-dark m-1';
-    cardBtn.textContent = 'Supprimer';
-    row2.appendChild(cardBtn);
+const positionElement1 = document.querySelector("#container-produits-panier");
 
-    // element déclencheur
-    cardBtn.addEventListener("click",Delete) 
+console.log(positionElement1);
 
-    function Delete(event){
-        localStorage.clear();
-        }
-    })
 
-})
+//fetch
+function getById(id) {
+    return fetch("http://localhost:3000/api/teddies/" + id);
+}
+function addTeddie(teddie) { // fonction pour afficher nom couleur et prix dans le panier 
+    console.log(teddie);
+
+    
+ //card du produit
+    const cardDescription = document.createElement("div");
+    panierRecap.appendChild(cardDescription);
+    cardDescription.className = " col-6  text-center";
+
+    //caractéristique
+    const cardBody = document.createElement("div");
+    cardBody.className = "cardBody "
+    cardDescription.appendChild(cardBody);
+
+    //Nom de l'ours
+    const cardTitle = document.createElement("h2");
+    cardTitle.textContent = teddie.name;
+    cardTitle.className = "cardTitle  card-text";
+    cardBody.appendChild(cardTitle);
+
+ 
+
+    //couleur choisie
+    const cardColor= document.createElement("p");
+    cardColor.textContent = "Couleur :" + " "+ teddie.color;
+    cardColor.className = "cardColor  card-text";
+    cardBody.appendChild(cardColor);
+
+ // titre quantité
+ const quantity = document.createElement("p");
+ cardBody.appendChild(quantity);
+ quantity.textContent = "Quantité :" +" "+ teddie.qty ;
+ quantity.className = "quantity";
+
+
+    //Prix produit
+    const cardPrice = document.createElement("p");
+    cardBody.appendChild(cardPrice);
+    cardPrice.textContent = `Prix unitaire : ${teddie.price / 100} €`;
+    cardPrice.className = "card-text-price ";
+
+    // création d'un total panier afin de mettre a jour les prix des ours en fct de leur qté
+  const montantPanier = document.getElementById("montant-panier");
+   //Prix de l'ours
+   const cardPriceTotal = document.createElement('p');
+   cardPriceTotal.className = 'card-text-total ';
+   cardBody.appendChild(cardPriceTotal);
+   
+   cardPriceTotal.innerHTML = 'Prix : ' + (JSON.parse(teddie.price/100))*(JSON.parse(teddie.qty));
+   cardPriceTotal.textContent = 'Total : ' + (JSON.parse(teddie.price /100))*(JSON.parse(teddie.qty)) + ' ' + '€';
+
+   
+   // appel de la div avec l'id montant-final pour afficher le total générale
+    
+   prixTotalPanier  = prixTotalPanier + (JSON.parse(teddie.price/100))*(JSON.parse(teddie.qty)); 
+    textMontantPanier.innerHTML = "Votre montant total est de :" +" "+ prixTotalPanier +' '+ '€';
+    
+ a[0]=  prixTotalPanier;
+
+    
+
+
+   
+//Bouton 
+
+// element déclencheur
+cardBtn.addEventListener("click",Delete) 
+
+function Delete(event){
+    localStorage.clear();}
+
+}
+
+// Afficher montant panier 
+const montantFinal = document.getElementById('montant-final');
+textMontantPanier = document.createElement("p");
+   montantFinal.appendChild(textMontantPanier);
+
+   // btn pour supprimer le panier
+const supprimerTotal = document.getElementById("supprimer-panier");
+
+const cardBtn = document.createElement('a');
+cardBtn.href = "cart.html"          //lien pour récupérer l'id du produit
+cardBtn.className = ' btn btn-dark m-1';
+cardBtn.textContent = 'Supprimer';
+supprimerTotal.appendChild(cardBtn);
+
+// tiitre remplir le formulaire
+const infoClient = document.getElementById("info-Client");
+infoClient.textContent = " Veuillez rentrer vos coordonnées :";
+infoClient.className = "p-3";
+
+
+// bouton pour confirmer et passer au formulaire
+const cardBtnConfirmer = document.getElementById("btnConfirmation");
+cardBtnConfirmer.href = "confirmer.html"          //lien pour récupérer l'id du produit
+cardBtnConfirmer.className = 'btn btn-outline-info m-1';
+cardBtnConfirmer.textContent = 'confirmer votre commande !';
+
+// bouton pour confirmer et passer au formulaire
+const cardBtnRetour = document.getElementById("btnRetour");
+cardBtnRetour.href = "confirmer.html"          //lien pour récupérer l'id du produit
+cardBtnRetour.className = 'btn btn-outline-info m-1';
+cardBtnRetour.textContent = 'Retour';
+   
+function upPanier() {
+
+//si le panier est vide : afficher le panier est vide
+
+    const items = JSON.parse(localStorage.getItem("Panier"));
+    if (items === null) {
+        const panierVide = `
+<div class="container-panier-vide">
+<div>Le panier est vide</div>
+</div>`;
+        positionElement1.innerHTML = panierVide;
+    } else { // si le panier n'est pas vide on affiche 
+
+
+        items.map(item => {
+            console.log(item);
+            this.getById(item.id)
+             
+
+                .then((res) => res.json())
+                .then((teddie) => {
+                    teddie.color = item.color;
+                    teddie.qty = item.qty;
+                    addTeddie(teddie);
+                  
+                }); 
+                 
+        })
+    }
+}
+console.log(a); 
+
+upPanier();
+
+
 
 
