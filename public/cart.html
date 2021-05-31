@@ -62,9 +62,39 @@
 
         <div class="container-recapitulatif" id="panier-recap">
            
-        </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Récapitulatif :</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="nom-tableau">
+                        <td>Nom</td>
+                        
+                    </tr>
+                    <tr id="couleur-tableau">
+                        <td>Couleur</td>
+                    </tr>
+                    <tr id="quantite-tableau">
+                        <td>Quantité</td>
+                    </tr>
+                    <tr id="prix-tableau">
+                        <td>Prix</td>
+                    </tr>
+                    <tr id="total-tableau">
+                        <td>Total article</td>
+                    </tr>
 
-       
+                    <tr id="supprimer-tableau">
+                        <td>
+                            Suppression
+                            </td> 
+                    </tr>
+                </tbody>
+            </table>
+            
+        
         
        
     </div>
@@ -76,26 +106,84 @@
 
         </div>
         
-        <div class="info-client" id="info-Client"></div>
-        </div>
+       
         <div id="response"></div>
 <div class="divForm">
-    <form  action="" id="form">
-      <input type="text" name="lastName" placeholder="Nom" id="lastName"  required><br>
-      <small class="hidden" id="response-lastName"></small><br>
-      <input type="text" name="firstName" placeholder="Prénom" id="firstName"  required><br>
-      <small class="hidden" id="response-firstName"></small><br>
-      <input type="text" name="address" placeholder="Adresse" id="address"  required><br>
-      <small class="hidden" id="response-address"></small><br>
-      <input  type="text" name="city" placeholder="Ville" id="city" required><br>
-      <small class="hidden" id="response-city"></small><br>
-      <input type="email" name="email" placeholder="E-mail"   id="email"  required><br>
-      <small class="hidden" id="response-email"></small><br>
-      <button id="btnConfirmation" type="submit"> Confirmer votre commade ! </button>
-      <a class="Retour" href="index.html" ><input type="button" id="btnRetour" value="Retour"></a> 
+    <form  action="" id="commander">
+        <form method="POST"  onsubmit="validation()" class="container mx-auto needs-validation " >
+            <h3 class=" text-center">Veuillez remplir le formulaire de commande
+               <span id="obligatoire">*</span></h3>
+               <div class="row mb-lg-3 offset-md-1">
+                  <div class="form-group col-lg-5 col-md-8">
+                     <label for="lastName">Nom</label>
+                     <input type="text" minlength="1"   class="form-control nom shadow-sm" id="nom" placeholder="Martin" required>
+                     <p id="misslastName"></p>
+                  </div>
+                  <div class="form-group col-lg-5 col-md-8">
+                     <label for="firstName">Prénom</label>
+                     <input   type="text" class="form-control class shadow-sm" id="prenom"     placeholder="Jean" required>
+                     <p id="missfirstName"></p>
+                  </div>
+               </div>
+                  
+               <div class="row mb-lg-3 offset-md-1">
+                  <div class="form-group col-lg-5 col-md-8">
+                     <label for="email">Entrez votre e-mail</label>
+                     <input type="email" class="form-control shadow-sm" id="email" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}"  placeholder="martinjean@gmail.com" required>
+                     <p id="missEmail"></p>
+                  </div>
+                  <div class="form-group col-lg-5 col-md-8">
+                     <label for="inputAdresse">Numéro et nom de la rue</label>
+                     <input type="text" class="form-control " id="adresse" placeholder="5 rue de la bastide" required >
+                     <p id="missInputAdresse"></p>
+                  </div>
+               </div>
+  
+               <div class="row mb-lg-3  offset-md-1">  
+                  <div class="form-group col-lg-5 col-md-8">
+                     <label for="inputCity">Ville</label>
+                     <input class="form-control shadow-sm" id="ville" placeholder="Aix-en-Provence" required>
+                     <p id="missInputCity"></p>
+                  </div>
+                  
+                  <div class="form-group col-lg-5 col-md-8">
+                    <button type="submit" id="submit" class=" mt-3 mb-3  btn btn-outline-info shadow p2 text-center">Confirmer ma commande !</button>
+              </div>
+               <div class="form-group row  offset-md-1">
+                  <div class="form-check">
+                     <input class="form-check-input col-2 " type="checkbox" value="" id="cgu" required checked>
+                     <label class="form-check-label offset-1 col" for="cgu">J'accepte les conditions générales d'utilisation et de la vente</label>
+                     <div class="invalid-feedback mb-5">Vous devez accepter les CGU pour continuer</div>
+                  </div>
+               </div>
+                 
+         </form>
+        
     </form>
+   
   </div>
-
+  <aside id="section" class="mx-auto shadow-lg ">
+    <div class="container text-center p-4 ">
+       <div class="row">
+          <div class="col"> 
+             <div class="row">
+                <div class="col-sm-4 ">
+                   <div class="infos"><i class="fas fa fa-check" aria-hidden="true"></i>Made in France</div>
+                </div>
+                
+                <div class="col-sm-4">
+                   <div class="infos"> <i class="fas fa fa-truck" aria-hidden="true"></i> Livraison en 48h</div>	 
+                </div>
+                
+                <div class="col-sm-4  ">
+                   <div class="infos"><i class="fas fa fa-lock" aria-hidden="true"></i> Paiement Sécurisé </div>	
+                </div>
+                   
+             </div>
+          </div> 
+       </div>
+    </div>
+ </aside>
 <!--footer-->
 
 <footer id="main-footer" class="text-center p-4">

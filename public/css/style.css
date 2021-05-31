@@ -18,7 +18,19 @@ img
 {
     margin-top: 4rem;
 }
+table,
+td {
+    border: 1px solid #333;
+}
 
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
 
-
+.material-icons-outlined
+{
+    color: lightcoral;
+}
 
