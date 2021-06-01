@@ -44,7 +44,7 @@ fetch("http://localhost:3000/api/teddies/" + getId())
             //div description du produit
             const divProduct = document.createElement("div");
             oursContainer.appendChild(divProduct);
-            divProduct.className = " col-6 col-md-4  p-0 text-center d-flex align-items-stretch ";
+            divProduct.className = "  col-md-4  p-0 text-center d-flex align-items-stretch ";
             console.log(divProduct);
 
 

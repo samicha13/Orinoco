@@ -44,20 +44,56 @@
             </div>
         </div>
     </header>
-    <h1 class="text-center m-4">Confirmation de votre Commande</h1>
-        <section id="main" class="container d-flex flex-column align-items-center">
+  
+    <h1 class="text-center m-4">Confirmation de votre Commande!</h1>
+        <section id="main" class="container d-flex flex-column align-items-center d-none">
+          <div id="order__message" class="alert alert-success m-3" role="alert">
+            <div class="row">
+              <div class="col col-2 col-md-1 text-center fs-1">
+                <i class="far fa-thumbs-up"></i>
+              </div>
+              <div class="col">
+                <h4 class="alert-heading"> Merci pour votre confiance <span id="order__firstName"></span>!
+                    <br>  Votre numéro de commande : <span id="order__id"></span>.
+                </h4><p id="order__total"> </p>
+                <p>Nous venons de vous envoyer un mail de confirmation à <span id="order__email"></span>.</p>
+              </div>
+              <hr>
+              <div class="col col-2 col-md-1"> </div>
+              <div class="col">
+                <p class="mb-0">Votre suivi de commande sera bientôt disponible.</p>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-outline-info m-4" id="index-btn" href="index.html" role="button">Revenir à l'accueil</a>
             <!--insertion dynamique de la page de confirmation-->
         </section>
 
-    <footer class="bg-light mt-5">
-        <div class="container">
-            <div class="row pt-4 pb-3">
-                <div class="col text-info text-center">
-                    <p>©Mentions légales - Orinoco</p>
+        <footer id="main-footer" class="  text-center p-4">
+
+            <div class="container mb-4">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="text-center">
+                            <a href="https://www.facebook.com" aria-label="facebook"><i class="fab fa-facebook"></i>Facebook</a>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://wwww.twitter.com" aria-label="twitter"><i class="fab fa-twitter-square"></i>Twitter</a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.instagram.com" aria-label="instagram"><i class="fab fa-instagram-square"></i>Instagram</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+                <div class="bg-light container">
+                    <div class="col text-info text-center">
+                        <p>Mentions légales &copy;
+                            <span id="year"></span>Orinoco
+                        </p>
+                    </div>
+                </div>
+            </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
