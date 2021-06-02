@@ -155,20 +155,18 @@ function upPanier() {
 
         })
 
-
-
-
-
-
-
-
-
+        // fonction condition de validation de l'email
+        function validateEmail(email) {
+            let emailReg = new RegExp(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i); //on défini le format du mail
+            let valid = emailReg.test(email); //comparaison avec le mail de l'acheteur
+        }
+        if (validateEmail(email)) {
+            alert("Email  valide");
+        } else {
+            alert("Email invalide");
+        }
 
         //*********************************Formulaire de commande  ****************$*/
-
-
-        //selection du bouton envoyer le formulaire 
-
 
         //-------- advent listener --------------
 
@@ -176,8 +174,6 @@ function upPanier() {
         document.getElementById("commander").addEventListener("submit", function (e) {
             e.preventDefault()
             alert('Commande envoyé!')
-
-
 
             const contact = {
                 lastName: document.getElementById("nom").value,
@@ -187,7 +183,6 @@ function upPanier() {
                 city: document.getElementById("ville").value,
 
             }
-
 
             //  mettre l'objet  "formulaireValues" dans le local storage 
 
@@ -222,15 +217,8 @@ function upPanier() {
                     window.location.href = 'confirmer.html'
 
                 });
-
-
         })
-
     }
 }
-
-
-
-
 
 upPanier();
