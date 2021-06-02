@@ -136,7 +136,7 @@ function upPanier() {
 
     } else { // si le panier n'est pas vide on affiche 
 
-    
+
 
         items.map(item => {
             //console.log(item);
@@ -164,67 +164,67 @@ function upPanier() {
 
 
 
-//*********************************Formulaire de commande  ****************$*/
+        //*********************************Formulaire de commande  ****************$*/
 
 
-//selection du bouton envoyer le formulaire 
+        //selection du bouton envoyer le formulaire 
 
 
-//-------- advent listener --------------
+        //-------- advent listener --------------
 
 
-document.getElementById("commander").addEventListener("submit", function (e) {
-    e.preventDefault()
-    alert('Commande envoyé!')
+        document.getElementById("commander").addEventListener("submit", function (e) {
+            e.preventDefault()
+            alert('Commande envoyé!')
 
 
 
-    const contact = {
-        lastName: document.getElementById("nom").value,
-        firstName: document.getElementById("prenom").value,
-        address: document.getElementById("adresse").value,
-        email: document.getElementById("email").value,
-        city: document.getElementById("ville").value,
+            const contact = {
+                lastName: document.getElementById("nom").value,
+                firstName: document.getElementById("prenom").value,
+                address: document.getElementById("adresse").value,
+                email: document.getElementById("email").value,
+                city: document.getElementById("ville").value,
 
-    }
-
-
-    //  mettre l'objet  "formulaireValues" dans le local storage 
-
-    localStorage.setItem("formulaireValues", JSON.stringify(contact));
-
-    // mettre les values du formulaire et mettre les produits séléctionnés dans un objet à envoyer vers le serveur
-
-    const data = {
-        products: items.map(item => item.id),
-        contact
-    }
-
-    console.log("data");
-    console.log(data);
-    const options = {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
-    return fetch(URL, options)
-        .then(response => response.json())
-        .then(function (response) {
-            // Adds the order object retrieved in the request
-            localStorage.setItem('order', JSON.stringify(response))
-
-            localStorage.setItem('total', JSON.stringify(prixTotalPanier));
-            // Remove products from localstorage
-            localStorage.removeItem('products')
-            // Redirects to the order confirmation page
-            window.location.href = 'confirmer.html'
-
-        });
+            }
 
 
-})
+            //  mettre l'objet  "formulaireValues" dans le local storage 
+
+            localStorage.setItem("formulaireValues", JSON.stringify(contact));
+
+            // mettre les values du formulaire et mettre les produits séléctionnés dans un objet à envoyer vers le serveur
+
+            const data = {
+                products: items.map(item => item.id),
+                contact
+            }
+
+            console.log("data");
+            console.log(data);
+            const options = {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            return fetch(URL, options)
+                .then(response => response.json())
+                .then(function (response) {
+                    // Adds the order object retrieved in the request
+                    localStorage.setItem('order', JSON.stringify(response))
+
+                    localStorage.setItem('total', JSON.stringify(prixTotalPanier));
+                    // Remove products from localstorage
+                    localStorage.removeItem('products')
+                    // Redirects to the order confirmation page
+                    window.location.href = 'confirmer.html'
+
+                });
+
+
+        })
 
     }
 }

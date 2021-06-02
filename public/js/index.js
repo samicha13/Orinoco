@@ -14,9 +14,9 @@ fetch(url) //recherche et récupération dans l'URL
                 // structure HTML 
 
                 //div col
-                const divCol = document.createElement("div");                 
-                divCol.className = 'col-12 col-md-6 col-lg-3 text-center';  
-                row.appendChild(divCol);   
+                const divCol = document.createElement("div");
+                divCol.className = 'col-12 col-md-6 col-lg-3 text-center';
+                row.appendChild(divCol);
 
                 //carte
                 const card = document.createElement('div')
@@ -37,14 +37,14 @@ fetch(url) //recherche et récupération dans l'URL
                 const cardName = document.createElement('p');
                 cardName.className = 'card-title m-1';
                 cardBody.appendChild(cardName);
-                cardName.innerHTML = element.name;                      
+                cardName.innerHTML = element.name;
 
                 //Prix de l'ours
                 const cardPrice = document.createElement('p');
                 cardPrice.className = 'card-text m-1';
                 cardBody.appendChild(cardPrice);
                 cardPrice.innerHTML = element.price;
-                cardPrice.textContent = element.price / 100 + ' ' + '€';         
+                cardPrice.textContent = element.price / 100 + ' ' + '€';
 
                 //Bouton 
                 const cardBtn = document.createElement('a');

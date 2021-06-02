@@ -174,21 +174,21 @@ fetch("http://localhost:3000/api/teddies/" + getId())
                         qty: btnQuantity.value,
                     };
 
-                    const arrayPanier = JSON.parse(localStorage.getItem('Panier') )|| [];
-                    const existPeluche = arrayPanier.filter(panier => (panier.id === pelucheCart.id && panier.color === pelucheCart.color) )[0];
-                  
-                   
+                    const arrayPanier = JSON.parse(localStorage.getItem('Panier')) || [];
+                    const existPeluche = arrayPanier.filter(panier => (panier.id === pelucheCart.id && panier.color === pelucheCart.color))[0];
+
+
                     if (existPeluche) {
-                        existPeluche['qty']  = parseInt(pelucheCart.qty) + parseInt(existPeluche['qty']) ;
+                        existPeluche['qty'] = parseInt(pelucheCart.qty) + parseInt(existPeluche['qty']);
                         console.log('déja présent');
 
 
                     } else {
-                    arrayPanier.push(pelucheCart);
+                        arrayPanier.push(pelucheCart);
                     }
 
                     console.log(arrayPanier);
-                    
+
 
                     localStorage.setItem('Panier', JSON.stringify(arrayPanier));
                     // alerte pour informer que le produit à bien été ajouté
