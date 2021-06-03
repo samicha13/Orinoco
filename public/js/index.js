@@ -54,4 +54,13 @@ fetch(url) //recherche et récupération dans l'URL
                 cardBody.appendChild(cardBtn);
             });
         })
+    })
+
+    .catch(function(error) { // message d'erreur en cas de rejet de la promesse avec fetch
+        let errorMessage = document.createElement('div');
+        errorMessage.className = 'alert alert-danger';
+        errorMessage.setAttribute('role', 'alert');
+        errorMessage.textContent = 'Oups! Il y a eu un problème... Veuillez réessayer plus tard.';
+        main.appendChild(errorMessage);
+        console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
     });

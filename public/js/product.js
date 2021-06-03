@@ -13,6 +13,7 @@ function getId() {
     return id
 }
 
+
 // recherche dans l'url
 fetch("http://localhost:3000/api/teddies/" + getId())
     .then(windowProduct => windowProduct.json())
@@ -161,7 +162,7 @@ fetch("http://localhost:3000/api/teddies/" + getId())
                 if (btnQuantity.value == 0) {
                     alert("Veuillez sélectionner une quantité")
                     event.preventDefault();
-                } else { // sinon on ajoute les elements id name price et description des que la qté est chosie
+                } else { // sinon on ajoute les elements id name qté et description des que la qté est chosie
 
 
 
