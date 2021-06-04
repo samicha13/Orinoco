@@ -26,6 +26,7 @@ fetch(url) //recherche et récupération dans l'URL
                 //image 
                 const cardImg = document.createElement('img');
                 cardImg.src = element.imageUrl;
+                cardImg.alt = "photo de l'ours " + element.name;
                 card.appendChild(cardImg);
 
                 //caractéristiques ( nom+prix)
@@ -56,7 +57,7 @@ fetch(url) //recherche et récupération dans l'URL
         })
     })
 
-    .catch(function(error) { // message d'erreur en cas de rejet de la promesse avec fetch
+    .catch(function (error) { // message d'erreur en cas de rejet de la promesse avec fetch
         let errorMessage = document.createElement('div');
         errorMessage.className = 'alert alert-danger';
         errorMessage.setAttribute('role', 'alert');

@@ -159,13 +159,13 @@ function upPanier() {
         function validateEmail(email) {
             let emailReg = new RegExp(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i); //on défini le format du mail
             let valid = emailReg.test(email); //comparaison avec le mail de l'acheteur
-        
-        if (validateEmail(email)) {
-            alert("Email  valide");
-        } else {
-            alert("Email invalide");
+
+            if (validateEmail(email)) {
+                alert("Email  valide");
+            } else {
+                alert("Email invalide");
+            }
         }
-}
         //*********************************Formulaire de commande  ****************$*/
 
         //-------- advent listener --------------

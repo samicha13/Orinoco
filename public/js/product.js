@@ -38,6 +38,7 @@ fetch("http://localhost:3000/api/teddies/" + getId())
 
             const imgProduct = document.createElement("img");
             imgProduct.src = Peluche.imageUrl;
+            imgProduct.alt = "photo de l'ours " + Peluche.name;
             imgProduct.className = "imgProduct";
             divImg.appendChild(imgProduct);
 
@@ -116,13 +117,14 @@ fetch("http://localhost:3000/api/teddies/" + getId())
             // div regroupant nb ours et titre quantité
             const oursQuantity = document.createElement("div");
             cardBody.appendChild(oursQuantity);
-            oursQuantity.className = "oursquantity";
-
+            oursQuantity.className = "oursquantity mt-2";
+            oursQuantity.setAttribute("for", "quantite");
             // titre quantité
-            const quantity = document.createElement("p");
+            const quantity = document.createElement("label");
             oursQuantity.appendChild(quantity);
             quantity.textContent = "Quantité";
             quantity.className = "quantity";
+            quantity.setAttribute("for", "quantite");
 
             // choix du nombre d'ours voulu
             const btnQuantity = document.createElement("input");
@@ -130,6 +132,8 @@ fetch("http://localhost:3000/api/teddies/" + getId())
             btnQuantity.setAttribute("type", "number");
             btnQuantity.setAttribute("value", 1);
             btnQuantity.setAttribute("min", 0);
+            btnQuantity.setAttribute("id", "quantite");
+
             btnQuantity.className = "quantityInput";
 
             // création d' une div qui regroupe 2 boutons
@@ -140,14 +144,14 @@ fetch("http://localhost:3000/api/teddies/" + getId())
             //bouton ajout panier
             const btnAjout = document.createElement("button");
             divBtn.appendChild(btnAjout);
-            btnAjout.className = "btn btn-outline-info m-2 p-2 cart_icon col-4"
-            btnAjout.textContent = "Ajouter";
+            btnAjout.className = "btn btn-outline-success shadow m-2 p-2 col-4"
             btnAjout.setAttribute('role', 'button');
+            btnAjout.textContent = "Ajouter";
 
             // bouton retour accueil
             const btnReturn = document.createElement("a");
             divBtn.appendChild(btnReturn);
-            btnReturn.className = "btn btn-outline-info shadow m-2 p2 col-7";
+            btnReturn.className = "btn btn-outline-success shadow m-2 p2 col-7";
             btnReturn.href = 'index.html';
             btnReturn.setAttribute = ('role', 'button');
             btnReturn.textContent = 'Retour à la liste des produits';

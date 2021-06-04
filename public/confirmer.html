@@ -27,27 +27,34 @@
 </head>
 
 <body>
-    <header class="bg-dark mb-5">
-        <div class="container">
-            <div class="row">
-                <nav class="col navbar navbar-expand navbar-dark">
-                    <a class="navbar-brand" href="index.html">Oricamera</a>
-                    <div id="navbarContent" class="collapse navbar-collapse">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a href="index.html" class="nav-link">Accueil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="cart.html" class="nav-link" id="inCart">Panier</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+    <header class=" bg-dark">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" id="main-nav">
+            <div class="container">
+
+                <a href="index.html" class="navbar-brand">Orinoco</a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse " aria-label="menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Accueil</a>
+                        </li>
+                        <li class="nav-item mr-1">
+                            <a href="cart.html" class="nav-link">Panier</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+
             </div>
-        </div>
+
+
+        </nav>
     </header>
 
-    <h1 class="text-center m-4">Confirmation de votre Commande!</h1>
+    <h1 class="text-center mt-5 pt-4">Confirmation de votre Commande!</h1>
     <section id="main" class="container d-flex flex-column align-items-center d-none">
         <div id="order__message" class="alert alert-success m-3" role="alert">
             <div class="row">
@@ -55,9 +62,9 @@
                     <i class="far fa-thumbs-up"></i>
                 </div>
                 <div class="col">
-                    <h4 class="alert-heading"> Merci pour votre confiance <span id="order__firstName"></span>!
+                    <h2 class="alert-heading"> Merci pour votre confiance <span id="order__firstName"></span>!
                         <br> Votre numéro de commande : <span id="order__id"></span>.
-                    </h4>
+                    </h2>
                     <p id="order__total"> </p>
                     <p>Nous venons de vous envoyer un mail de confirmation à <span id="order__email"></span>.</p>
                 </div>
@@ -68,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <a class="btn btn-outline-info m-4" id="index-btn" href="index.html" role="button">Revenir à l'accueil</a>
+        <a class="btn btn-outline-dark m-4" id="index-btn" href="index.html" role="button">Revenir à l'accueil</a>
         <!--insertion dynamique de la page de confirmation-->
     </section>
 
@@ -78,22 +85,22 @@
             <div class="row">
                 <div class="col-4">
                     <div class="text-center">
-                        <a href="https://www.facebook.com" aria-label="facebook"><i
+                        <a class="reseau" href="https://www.facebook.com" aria-label="facebook"><i
                                 class="fab fa-facebook"></i>Facebook</a>
                     </div>
                 </div>
                 <div class="col-4">
-                    <a href="https://wwww.twitter.com" aria-label="twitter"><i
+                    <a class="reseau" href="https://wwww.twitter.com" aria-label="twitter"><i
                             class="fab fa-twitter-square"></i>Twitter</a>
                 </div>
                 <div class="col-4">
-                    <a href="https://www.instagram.com" aria-label="instagram"><i
+                    <a class="reseau" href="https://www.instagram.com" aria-label="instagram"><i
                             class="fab fa-instagram-square"></i>Instagram</a>
                 </div>
             </div>
         </div>
-        <div class="bg-light container">
-            <div class="col text-info text-center">
+        <div class=" container">
+            <div class="col text-center">
                 <p>Mentions légales &copy;
                     <span id="year"></span>Orinoco
                 </p>

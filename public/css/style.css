@@ -34,7 +34,14 @@ tfoot {
     color: lightcoral;
 }
 
-/*loader*/
+.reseau
+{
+    color: blue;
+}
+
+
+
+/*-------------loader--------------------------------*/
 
 .loading
 {
@@ -83,7 +90,7 @@ tfoot {
 }
 
 @keyframes flash{
- 0%{   color:pink;
+ 0%{   color:#801E4C;
 text-shadow: 0 0 1rem black;}
 
 40%{
@@ -91,7 +98,7 @@ text-shadow: 0 0 1rem black;}
     text-shadow: 0 0 1rem black;
 }
 70%{
-    color: pink;
+    color:#801E4C;
     text-shadow: 0 0 1rem black;
 }
 100%{color:blue;
